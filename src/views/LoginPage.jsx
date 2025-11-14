@@ -19,11 +19,8 @@ export default function LoginPage() {
     <Box
       sx={{
         minHeight: "100vh",
-        backgroundImage: "url('src/assets/Prueba de Fondo.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center center",
-        backgroundAttachment: "fixed",
-       
+
+
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
@@ -37,7 +34,7 @@ export default function LoginPage() {
           flex: 1,
           color: "white",
           pl: 6,
-          mt: 10,
+          mt: 35,
           zIndex: 2,
           maxWidth: "40%",
           display: { xs: "none", md: "flex" },
@@ -46,57 +43,70 @@ export default function LoginPage() {
         <Typography
           variant="h3"
           fontWeight="bold"
-          sx={{ lineHeight: 1.2, maxWidth: 400 }}
+          sx={{ lineHeight: 1.2, maxWidth: 900 }}
         >
           Gestiona torneos y equipos desde un solo lugar
         </Typography>
       </Box>
 
-      {/* PANEL DERECHO */}
+      {/* PANEl */}
       <Paper
         sx={{
-          width: { xs: "90%", sm: 420 },
+          width: 420,                    // más delgado
+          minHeight: 570,                // más alto = alargado
           borderRadius: "30px",
-          background: "#f3e7de",
-          p: 5,
-          zIndex: 3,
-          position: "relative",
-          mr: { xs: 0, md: 60 },
+          background: "#f5e9df",
+          p: 6,
+          pt: 1,                         // sube el contenido
+          display: "flex",
+          flexDirection: "column",
+         // justifyContent: "flex-start",  // coloca todo arriba
+          boxShadow: "0px 8px 40px rgba(0,0,0,0.28)",
+          opacity: 0.97,
+          mr: { xs: 0, md: 10 },
           mt: 6,
-          opacity: 0.92,
         }}
-        elevation={10}
+        elevation={0}
       >
-        <Typography variant="h4" fontWeight="bold">
+
+        <Typography variant="h4" fontWeight="bold" sx={{ mb: 1 , mt: 3 }}>
           ¡De vuelta al control!
         </Typography>
-        <Typography variant="body2" sx={{ mb: 4 }}>
+
+        <Typography variant="body2" fontWeight="bold" sx={{ mb:5, mt: 4 }}>
           Inicia sesión para administrar torneos.
         </Typography>
 
-        {/* FORMULARIO */}
+
+        {/* USUARIO */}
+        <Typography sx={{ color: "#000", mb: 1, mt: 2 }} fontWeight="bold" > Correo electrónico </Typography>
         <TextField
           fullWidth
-          label="Correo electrónico"
-          placeholder="Ingresa tu correo"
+
           InputProps={{
             sx: {
               borderRadius: "30px",
-              bgcolor: "#c9c9c9",
+              bgcolor: "#d0cece",
+              px: 2,
+              height: 50,
             },
           }}
           sx={{ mb: 3 }}
         />
 
+
+        {/* CONTRASEÑA */}
+        <Typography sx={{ color: "#000", mb: 1, mt: 3 }} fontWeight="bold" >Contraseña</Typography>
         <TextField
           fullWidth
-          label="Contraseña"
           type={showPassword ? "text" : "password"}
-          placeholder="Ingresa tu contraseña"
+
           InputProps={{
             sx: {
               borderRadius: "30px",
-              bgcolor: "#c9c9c9",
+              bgcolor: "#d0cece",
+              px: 2,
+              height: 50,
             },
             endAdornment: (
               <InputAdornment position="end">
@@ -107,6 +117,8 @@ export default function LoginPage() {
             ),
           }}
         />
+
+
 
         <Typography
           variant="caption"
