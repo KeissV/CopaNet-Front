@@ -71,3 +71,94 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+/* CONTENEDOR NEGRO */
+.recover-container {
+  width: 360px;
+  height: 480px;
+  background: #000;
+  border-radius: 4px;
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+/* TITULO NARANJA */
+.title-orange {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ff6a00;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* ICONO GRANDE */
+.icon-large {
+  font-size: 70px;
+  color: #ff6a00;
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+/* TEXTO DESCRIPTIVO */
+.description {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+/* INPUTS */
+.recover-input {
+  width: 100%;
+  height: 40px;
+  background: #000;
+  border: 1.5px solid #fff;
+  border-radius: 5px;
+  padding-left: 10px;
+  color: white;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+/* BOTÓN PRINCIPAL */
+.recover-btn {
+  width: 100%;
+  height: 40px;
+  background: #fff;
+  color: #000;
+  border-radius: 6px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+/* LINK INFERIOR */
+.return-link {
+  margin-top: 15px;
+  font-size: 13px;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* OTP CODES */
+.otp-wrapper {
+  display: flex;
+  gap: 12px;
+  margin: 15px 0 25px;
+}
+
+.otp-box {
+  width: 48px;
+  height: 58px;
+  border: 2px solid #fff;
+  background: #000;
+  border-radius: 5px;
+  font-size: 32px;
+  text-align: center;
+  color: #fff;
+}
