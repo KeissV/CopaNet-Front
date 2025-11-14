@@ -226,10 +226,10 @@ export default function LoginPage() {
             alignItems: "center",
           }}
         >
-         <RecoveryNewPassword 
-  onFinish={() => setScreen(null)}
-  onBack={() => setScreen(null)}
-/>
+          <RecoveryNewPassword
+            onFinish={() => setScreen(null)}
+            onBack={() => setScreen(null)}
+          />
 
         </Box>
       )}
