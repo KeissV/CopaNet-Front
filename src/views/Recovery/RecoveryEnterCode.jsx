@@ -1,8 +1,10 @@
 import { Box, Typography, Button, TextField } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
-export default function RecoveryEnterCode({ onNext, onBack }) {
+const API_BASE = "http://localhost:8080/api/auth";
+
+export default function RecoveryEnterCode({ email, onNext, onBack }) {
   const inputRefs = [
     useRef(null),
     useRef(null),
@@ -10,13 +12,15 @@ export default function RecoveryEnterCode({ onNext, onBack }) {
     useRef(null),
   ];
 
+  const [loading, setLoading] = useState(false);
+  const [msg, setMsg] = useState("");
+  const [error, setError] = useState("");
+
   const handleChange = (e, index) => {
     const value = e.target.value;
 
-    // Solo números
     if (!/^[0-9]?$/.test(value)) return;
 
-    // Avanza automáticamente
     if (value && index < 3) {
       inputRefs[index + 1].current?.focus();
     }
@@ -25,6 +29,42 @@ export default function RecoveryEnterCode({ onNext, onBack }) {
   const handleKeyDown = (e, index) => {
     if (e.key === "Backspace" && !e.target.value && index > 0) {
       inputRefs[index - 1].current?.focus();
+    }
+  };
+
+  const handleVerify = async () => {
+    setError("");
+    setMsg("");
+
+    const code = inputRefs
+      .map((r) => r.current?.value || "")
+      .join("");
+
+    if (code.length < 4) {
+      setError("Ingresa el código completo.");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const res = await fetch(`${API_BASE}/recovery/code`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, code }),
+      });
+
+      const text = await res.text();
+
+      if (!res.ok) {
+        setError(text || "Código inválido.");
+      } else {
+        setMsg("Código válido. Ahora puedes cambiar tu contraseña.");
+        onNext(code); // mandamos el código al padre
+      }
+    } catch (e) {
+      setError("No se pudo conectar con el servidor.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -51,16 +91,15 @@ export default function RecoveryEnterCode({ onNext, onBack }) {
       <Typography sx={{ color: "#fff", mb: 3 }}>
         Digite el código de verificación que enviamos al correo
         <br />
-        <span style={{ color: "#ff6600" }}>********@gmail.com</span>
+        <span style={{ color: "#ff6600" }}>{email || "********@gmail.com"}</span>
       </Typography>
 
-      {/* Cajas del código (ahora sí funcionales) */}
       <Box
         sx={{
           display: "flex",
           justifyContent: "center",
           gap: 2,
-          mb: 3,
+          mb: 2,
         }}
       >
         {[0, 1, 2, 3].map((i) => (
@@ -92,10 +131,18 @@ export default function RecoveryEnterCode({ onNext, onBack }) {
         ))}
       </Box>
 
+      {error && (
+        <Typography sx={{ color: "red", mb: 1, fontSize: 14 }}>{error}</Typography>
+      )}
+      {msg && (
+        <Typography sx={{ color: "#4caf50", mb: 1, fontSize: 14 }}>{msg}</Typography>
+      )}
+
       <Button
         fullWidth
         variant="contained"
-        onClick={onNext}
+        onClick={handleVerify}
+        disabled={loading}
         sx={{
           bgcolor: "#fff",
           color: "#000",
@@ -103,7 +150,7 @@ export default function RecoveryEnterCode({ onNext, onBack }) {
           "&:hover": { bgcolor: "#e5e5e5" },
         }}
       >
-        Verificar
+        {loading ? "Verificando..." : "Verificar"}
       </Button>
 
       <Typography
@@ -113,7 +160,7 @@ export default function RecoveryEnterCode({ onNext, onBack }) {
           cursor: "pointer",
           fontSize: "14px",
         }}
-        onClick={onBack}  // 👈🔥 ahora funciona
+        onClick={onBack}
       >
         Volver a Iniciar Sesión
       </Typography>

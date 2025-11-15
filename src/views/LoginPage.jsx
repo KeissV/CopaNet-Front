@@ -20,15 +20,83 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
 
+  // 🔥 estados para login
+  const [email, setEmail] = useState("admin@gmail.com");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [usuario, setUsuario] = useState(null);
+  const [tablas, setTablas] = useState([]);
+
   // 🔥 CONTROL DE PANTALLAS DE RECUPERACIÓN (email → code → newpass)
   const [screen, setScreen] = useState(null);
 
+  // 🔥 estados para recuperación
+  const [recoveryEmail, setRecoveryEmail] = useState("");
+  const [recoveryCode, setRecoveryCode] = useState("");
+
   const openRecovery = () => {
-    console.log("openRecovery called");
     setScreen("email"); // inicia en la pantalla de correo
   };
 
+  // ====== LLAMADA AL BACKEND PARA LOGIN ======
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError("");
 
+    try {
+      // 1) LOGIN
+      const res = await fetch("http://localhost:8080/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!res.ok) {
+        const msg = await res.text();
+        throw new Error(msg || "Error al iniciar sesión");
+      }
+
+      const data = await res.json(); // { usuarioId, email, nombre, roles }
+      setUsuario(data);
+
+      // 2) CARGAR TABLAS SOLO SI LOGIN OK
+      const resTablas = await fetch("http://localhost:8080/api/meta/tablas");
+      const dataTablas = await resTablas.json();
+      setTablas(dataTablas);
+    } catch (err) {
+      console.error(err);
+      setError(err.message);
+    }
+  };
+
+  // =========================================================
+  //  VISTA DESPUÉS DEL LOGIN: mostrar usuario + tablas
+  // =========================================================
+  if (usuario) {
+    return (
+      <Box sx={{ minHeight: "100vh", p: 4, bgcolor: "#111", color: "#fff" }}>
+        <Typography variant="h4" sx={{ mb: 2 }}>
+          Bienvenido, {usuario.nombre} (roles: {usuario.roles.join(", ")})
+        </Typography>
+
+        <Typography variant="h6" sx={{ mb: 1 }}>
+          Tablas en la base de datos
+        </Typography>
+
+        <ul>
+          {tablas.map((t, i) => (
+            <li key={i}>
+              {t.esquema}.{t.nombre}
+            </li>
+          ))}
+        </ul>
+      </Box>
+    );
+  }
+
+  // =========================================================
+  //  VISTA DE LOGIN (ANTES DE AUTENTICAR)
+  // =========================================================
   return (
     <>
       {/* ======================= LOGIN ======================= */}
@@ -80,6 +148,8 @@ export default function LoginPage() {
             mt: 6,
           }}
           elevation={0}
+          component="form"
+          onSubmit={handleLogin}
         >
           <Typography variant="h4" fontWeight="bold" sx={{ mb: 1, mt: 3 }}>
             ¡De vuelta al control!
@@ -95,6 +165,8 @@ export default function LoginPage() {
           </Typography>
           <TextField
             fullWidth
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             InputProps={{
               sx: {
                 borderRadius: "30px",
@@ -113,6 +185,8 @@ export default function LoginPage() {
           <TextField
             fullWidth
             type={showPassword ? "text" : "password"}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             InputProps={{
               sx: {
                 borderRadius: "30px",
@@ -130,6 +204,15 @@ export default function LoginPage() {
             }}
           />
 
+          {error && (
+            <Typography
+              variant="body2"
+              sx={{ color: "red", mt: 1, fontWeight: "bold" }}
+            >
+              {error}
+            </Typography>
+          )}
+
           <Typography
             variant="caption"
             color="primary"
@@ -145,6 +228,7 @@ export default function LoginPage() {
           </Typography>
 
           <Button
+            type="submit"
             fullWidth
             variant="contained"
             sx={{
@@ -180,10 +264,12 @@ export default function LoginPage() {
           }}
         >
           <RecoveryEnterEmail
-            onNext={() => setScreen("code")}
+            onNext={(correo) => {
+              setRecoveryEmail(correo);
+              setScreen("code");
+            }}
             onBack={() => setScreen(null)}
           />
-
         </Box>
       )}
 
@@ -204,7 +290,11 @@ export default function LoginPage() {
           }}
         >
           <RecoveryEnterCode
-            onNext={() => setScreen("newpass")}
+            email={recoveryEmail}
+            onNext={(codigo) => {
+              setRecoveryCode(codigo);
+              setScreen("newpass");
+            }}
             onBack={() => setScreen(null)}
           />
         </Box>
@@ -227,13 +317,13 @@ export default function LoginPage() {
           }}
         >
           <RecoveryNewPassword
+              email={recoveryEmail}
+            code={recoveryCode}
             onFinish={() => setScreen(null)}
             onBack={() => setScreen(null)}
           />
-
         </Box>
       )}
-
     </>
   );
 }
