@@ -1,0 +1,67 @@
+import { Link, useLocation } from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
+import PeopleIcon from "@mui/icons-material/People";
+import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
+import GroupsIcon from "@mui/icons-material/Groups";
+import InfoIcon from "@mui/icons-material/Info";
+import PaymentsIcon from "@mui/icons-material/Payments";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import LogoutIcon from "@mui/icons-material/Logout";
+import "../Sidebar.css";
+
+export default function Sidebar() {
+  const location = useLocation();
+
+  return (
+    <aside className="sidebar">
+      <div>
+        <h2 className="logo">CopaNet</h2>
+
+        <nav className="sidebar-menu">
+          <Link to="/dashboard" className={`sidebar-item ${location.pathname === "/dashboard" ? "active" : ""}`}>
+            <HomeIcon />
+            Inicio
+          </Link>
+
+          <Link to="/users" className={`sidebar-item ${location.pathname === "/users" ? "active" : ""}`}>
+            <PeopleIcon />
+            Usuarios
+          </Link>
+
+          <Link className="sidebar-item">
+            <EmojiEventsIcon />
+            Torneos
+          </Link>
+
+          <Link to="/teams" className={`sidebar-item ${location.pathname === "/teams" ? "active" : ""}`}>
+            <GroupsIcon />
+            Equipos
+          </Link>
+
+          <Link className="sidebar-item">
+            <InfoIcon />
+            Sanciones
+          </Link>
+
+          <Link className="sidebar-item">
+            <PaymentsIcon />
+            Pagos
+          </Link>
+
+          <Link to="/audit" className={`sidebar-item ${location.pathname === "/audit" ? "active" : ""}`}>
+            <MenuBookIcon />
+            Auditoría
+          </Link>
+        </nav>
+      </div>
+
+      <div to="/" className="logout-container">
+        <Link className="logout-btn">
+          <LogoutIcon />
+          Cerrar sesión
+        </Link>
+      </div>
+    </aside>
+  );
+}
+
