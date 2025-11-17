@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import PeopleIcon from "@mui/icons-material/People";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
@@ -11,6 +11,11 @@ import "../Sidebar.css";
 
 export default function Sidebar() {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate("/");
+  };
 
   return (
     <aside className="sidebar">
@@ -55,13 +60,10 @@ export default function Sidebar() {
         </nav>
       </div>
 
-      <div to="/" className="logout-container">
-        <Link className="logout-btn">
-          <LogoutIcon />
-          Cerrar sesión
-        </Link>
-      </div>
+      <button className="logout-btn" onClick={handleLogout}>
+        <LogoutIcon />
+        Cerrar sesión
+      </button>
     </aside>
   );
 }
-

@@ -1,3 +1,7 @@
+body {
+  overflow-x: hidden;
+}
+
 .sidebar {
   width: 230px;
   background: #000;
@@ -7,6 +11,7 @@
   justify-content: space-between;
   padding: 25px 15px;
   color: white;
+   overflow-y: hidden;
 }
 
 .logo {
@@ -56,7 +61,10 @@
   align-items: center;
   gap: 15px; /* AUMENTAMOS ESPACIO */
   font-weight: 500;
+  margin-bottom: 60px;
+  cursor: pointer;
 }
+
 
 .sidebar-menu svg,
 .logout-btn svg {
