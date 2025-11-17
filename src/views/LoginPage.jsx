@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import RecoveryEnterEmail from "./Recovery/RecoveryEnterEmail";
 import RecoveryEnterCode from "./Recovery/RecoveryEnterCode";
@@ -18,6 +19,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 export default function LoginPage() {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
   // 🔥 estados para login
@@ -73,25 +75,8 @@ export default function LoginPage() {
   //  VISTA DESPUÉS DEL LOGIN: mostrar usuario + tablas
   // =========================================================
   if (usuario) {
-    return (
-      <Box sx={{ minHeight: "100vh", p: 4, bgcolor: "#111", color: "#fff" }}>
-        <Typography variant="h4" sx={{ mb: 2 }}>
-          Bienvenido, {usuario.nombre} (roles: {usuario.roles.join(", ")})
-        </Typography>
-
-        <Typography variant="h6" sx={{ mb: 1 }}>
-          Tablas en la base de datos
-        </Typography>
-
-        <ul>
-          {tablas.map((t, i) => (
-            <li key={i}>
-              {t.esquema}.{t.nombre}
-            </li>
-          ))}
-        </ul>
-      </Box>
-    );
+    navigate("/dashboard");
+    return null;  // 👈 evita que renderice pantalla negra
   }
 
   // =========================================================
