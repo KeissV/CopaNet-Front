@@ -1,4 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import HomeIcon from "@mui/icons-material/Home";
 import PeopleIcon from "@mui/icons-material/People";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
@@ -14,7 +15,20 @@ export default function Sidebar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    navigate("/");
+    Swal.fire({
+      title: "¿Cerrar sesión?",
+      text: "Tu sesión se cerrará.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#ff6a00",
+      cancelButtonColor: "#555",
+      confirmButtonText: "Sí, salir",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate("/"); // Vuelve al Login
+      }
+    });
   };
 
   return (
