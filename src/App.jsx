@@ -5,7 +5,7 @@ import UsersPage from "./views/UsersPage";
 import TeamsPage from "./views/TeamsPage";
 import AuditPage from "./views/AuditPage";
 import TeamRequestsPage from "./views/TeamRequestsPage";
-
+import TeamDetailsPage from "./views/TeamDetailsPage";
 
 
 
@@ -20,7 +20,7 @@ function App() {
         <Route path="/teams" element={<TeamsPage />} />
         <Route path="/audit" element={<AuditPage />} />
         <Route path="/teams/requests" element={<TeamRequestsPage />} />
-
+        <Route path="/teams/details" element={<TeamDetailsPage />} />
 
 
 
