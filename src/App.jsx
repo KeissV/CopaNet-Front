@@ -6,6 +6,9 @@ import TeamsPage from "./views/TeamsPage";
 import AuditPage from "./views/AuditPage";
 import TeamRequestsPage from "./views/TeamRequestsPage";
 import TeamDetailsPage from "./views/TeamDetailsPage";
+import UserRequestsPage from "./views/UserRequestsPage"
+import UserEditPage from "./views/UserEditPage"
+import UserRegisterPage from "./views/UserRegisterPage"
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
         <Route path="/audit" element={<AuditPage />} />
         <Route path="/teams/requests" element={<TeamRequestsPage />} />
         <Route path="/teams/details" element={<TeamDetailsPage />} />
+        <Route path="/user/requests" element={<UserRequestsPage />} />
+        <Route path="/users/edit" element={<UserEditPage />} />
+        <Route path="/user/register" element={<UserRegisterPage />} />
       </Routes>
     </BrowserRouter>
   );
