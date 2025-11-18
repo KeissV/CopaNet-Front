@@ -185,17 +185,19 @@ export default function TeamRequestsPage() {
         )}
 
         {/* POPUPS */}
-        {showMessage === "ok" && (
-          <div className="popup success">
-            Solicitud aprobada <CheckIcon className="icon" />
-          </div>
-        )}
+       {showMessage === "ok" && (
+  <div className="popup success">
+    <span>Solicitud de modificación aprobada</span>
+    <CheckIcon className="icon" />
+  </div>
+)}
 
-        {showMessage === "no" && (
-          <div className="popup reject">
-            Solicitud rechazada <CloseIcon className="icon" />
-          </div>
-        )}
+{showMessage === "no" && (
+  <div className="popup reject">
+    <span>Solicitud de modificación rechazada</span>
+    <CloseIcon className="icon" />
+  </div>
+)}
 
       </main>
     </div>
