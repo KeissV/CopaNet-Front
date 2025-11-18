@@ -10,8 +10,8 @@
 .users-main {
   flex: 1;
   padding: 25px 40px;
-  overflow-y: auto;
-  overflow-x: hidden !important;
+  overflow-y: hidden;
+  height: 100vh; 
 }
 
 /* ==== BUSCADOR ==== */
@@ -200,4 +200,106 @@ body,
 .users-table-container {
   scrollbar-width: thin;
   scrollbar-color: #ffffff transparent; /* Firefox */
+}
+
+/* ===== OVERLAY ===== */
+.delete-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+/* ===== MODAL BOX ===== */
+.delete-modal-box {
+  width: 520px;
+  background: black;
+  padding: 35px 40px;
+  border-radius: 6px;          /* un poco cuadrado como Figma */
+  color: white;
+  text-align: center;
+}
+
+/* ===== TITLES ===== */
+.delete-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.delete-subtext {
+  font-size: 14px;
+  color: #cccccc;
+  margin-bottom: 25px;
+}
+
+/* ===== INPUTS ===== */
+.delete-input {
+  width: 100%;
+  background: #4a4a4a;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  color: white;
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+/* ===== BUTTONS ===== */
+.delete-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.btn-confirm-delete {
+  background: #19cf32;
+  color: white;
+  border: none;
+  padding: 10px 26px;
+  border-radius: 16px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-cancel-delete {
+  background: #c40000;
+  color: white;
+  border: none;
+  padding: 10px 26px;
+  border-radius: 16px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ===== POPUP ===== */
+.popup-delete-success {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: black;
+  padding: 18px 28px;
+  border-radius: 16px;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: fadeInOut 2.4s ease forwards;
+  z-index: 2500;
+}
+
+.popup-check {
+  color: #19cf32;
+  font-size: 26px;
 }
