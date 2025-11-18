@@ -3,13 +3,40 @@ import "../Teams.css";
 import SearchIcon from "@mui/icons-material/Search";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // 👈 IMPORTANTE
+import { useNavigate } from "react-router-dom";
 
 export default function TeamsPage() {
-  const navigate = useNavigate(); // 👈 PARA NAVEGAR
+  const navigate = useNavigate();
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
+  // 🔥 Datos de ejemplo (mientras no hay Backend)
+  const equiposData = [
+    {
+      id: "#4568909",
+      nombre: "Los Titanes",
+      dte: "José Pérez",
+      plantilla: 11,
+      estado: "Activo",
+      jugadores: [
+        { cedula: "207890123", nombre: "Luis Ramírez", camiseta: "10", posicion: "Delantero" },
+        { cedula: "209876543", nombre: "Mario López", camiseta: "8", posicion: "Mediocampista" }
+      ],
+      torneos: [
+        { nombre: "Verano 2026", estado: "Activo", fechaInicio: "12/01/2026", fechaFin: "30/04/2026" }
+      ]
+    },
+    ...Array.from({ length: 6 }).map((_, i) => ({
+      id: `00${i + 1}`,
+      nombre: `Equipo ${i + 1}`,
+      dte: `DTE ${i + 1}`,
+      plantilla: Math.floor(Math.random() * 10) + 5,
+      estado: ["Activo", "Inactivo", "Pendiente"][i % 3],
+      jugadores: [],
+      torneos: []
+    }))
+  ];
 
   const openDeleteModal = (teamName) => {
     setSelectedTeam(teamName);
@@ -44,7 +71,7 @@ export default function TeamsPage() {
         <div className="teams-actions-row">
           <button
             className="btn-solicitudes-teams"
-            onClick={() => navigate("/equipos/solicitudes")} // 👈 NAVEGA A LA VISTA DE SOLICITUDES
+            onClick={() => navigate("/teams/requests")}
           >
             <HelpOutlineIcon style={{ marginRight: "10px" }} />
             Solicitudes
@@ -66,67 +93,30 @@ export default function TeamsPage() {
             </thead>
 
             <tbody>
-              <tr>
-                <td>#4568909</td>
-                <td>Los Titanes</td>
-                <td>José Pérez</td>
-                <td>11</td>
-                <td>Activo</td>
-                <td className="td-actions">
-                  <button
-                    className="btn-delete"
-                    onClick={() => openDeleteModal("Los Titanes")}
-                  >
-                    Eliminar
-                  </button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>#3429839</td>
-                <td>Copa Buena</td>
-                <td>Roberto Gómez</td>
-                <td>11</td>
-                <td>Inactivo</td>
-                <td className="td-actions">
-                  <button className="btn-delete">Eliminar</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>#5379283</td>
-                <td>Golfito FC</td>
-                <td>Adrián Mora</td>
-                <td>7</td>
-                <td>Activo</td>
-                <td className="td-actions">
-                  <button className="btn-delete">Eliminar</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>#8478574</td>
-                <td>Los Halcones</td>
-                <td>Dario Peña</td>
-                <td>5</td>
-                <td>Pendiente</td>
-                <td className="td-actions">
-                  <button className="btn-delete">Eliminar</button>
-                </td>
-              </tr>
-
-              {/* 10 EQUIPOS DE EJEMPLO */}
-              <tr><td>001</td><td>Titanes FC</td><td>Carlos Méndez</td><td>Verano 2026</td><td>12/11/2025</td><td className="td-actions"><button className="btn-delete">Eliminar</button></td></tr>
-              <tr><td>002</td><td>Águilas del Valle</td><td>Ricardo Araya</td><td>Invierno 2026</td><td>08/11/2025</td><td className="td-actions"><button className="btn-delete">Eliminar</button></td></tr>
-              <tr><td>003</td><td>Guerreros del Sur</td><td>Melissa Quesada</td><td>Verano 2027</td><td>11/11/2025</td><td className="td-actions"><button className="btn-delete">Eliminar</button></td></tr>
-              <tr><td>004</td><td>Halcones Dorados</td><td>José Mora</td><td>Primavera 2026</td><td>05/11/2025</td><td className="td-actions"><button className="btn-delete">Eliminar</button></td></tr>
-              <tr><td>005</td><td>Lobos FC</td><td>Daniel Rojas</td><td>Invierno 2027</td><td>15/11/2025</td><td className="td-actions"><button className="btn-delete">Eliminar</button></td></tr>
-              <tr><td>006</td><td>Leones del Norte</td><td>Hernán Gutiérrez</td><td>Otoño 2026</td><td>09/11/2025</td><td className="td-actions"><button className="btn-delete">Eliminar</button></td></tr>
-              <tr><td>007</td><td>Furia Roja</td><td>Marco Soto</td><td>Primavera 2027</td><td>13/11/2025</td><td className="td-actions"><button className="btn-delete">Eliminar</button></td></tr>
-              <tr><td>008</td><td>Trueno Azul</td><td>Iván Fernández</td><td>Verano 2026</td><td>07/11/2025</td><td className="td-actions"><button className="btn-delete">Eliminar</button></td></tr>
-              <tr><td>009</td><td>Centinelas</td><td>Oscar Navarro</td><td>Invierno 2026</td><td>10/11/2025</td><td className="td-actions"><button className="btn-delete">Eliminar</button></td></tr>
-              <tr><td>010</td><td>Leopards Elite</td><td>Adriana Solano</td><td>Otoño 2026</td><td>03/11/2025</td><td className="td-actions"><button className="btn-delete">Eliminar</button></td></tr>
-
+              {equiposData.map((eq, i) => (
+                <tr
+                  key={i}
+                  onClick={() => navigate("/teams/details", { state: eq })}
+                  style={{ cursor: "pointer" }}
+                >
+                  <td>{eq.id}</td>
+                  <td>{eq.nombre}</td>
+                  <td>{eq.dte}</td>
+                  <td>{eq.plantilla}</td>
+                  <td>{eq.estado}</td>
+                  <td className="td-actions">
+                    <button
+                      className="btn-delete"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openDeleteModal(eq.nombre);
+                      }}
+                    >
+                      Eliminar
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -153,23 +143,23 @@ export default function TeamsPage() {
                   Confirmar
                 </button>
 
-                <button className="btn-cancel" onClick={closeDeleteModal}>
-                  Cancelar
-                </button>
+                  <button className="btn-cancel" onClick={closeDeleteModal}>
+                    Cancelar
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* ===== POPUP DE ÉXITO ===== */}
-        {showSuccessMessage && (
-          <div className="success-popup">
-            <span>Equipo eliminado correctamente</span>
-            <span className="success-check">✔</span>
-          </div>
-        )}
+          {/* ===== POPUP DE ÉXITO ===== */}
+          {showSuccessMessage && (
+            <div className="success-popup">
+              <span>Equipo eliminado correctamente</span>
+              <span className="success-check">✔</span>
+            </div>
+          )}
 
-      </main>
-    </div>
-  );
+        </main>
+      </div>
+    );
 }

@@ -22,6 +22,7 @@
   cursor: pointer;
   margin-bottom: 15px;
 }
+
 .btn-back svg {
   font-size: 20px;
 }
@@ -87,12 +88,7 @@
   margin-bottom: 20px;
 }
 
-.table-container {
-  background: #3a3a3a;
-  border-radius: 12px;
-  padding: 17px;
-}
-
+/* TABLE */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -103,6 +99,15 @@ td {
   padding: 12px 10px;
   font-size: 15px;
   color: white;
+  text-align: left;
+}
+
+/* Sticky Header */
+.table-container table thead th {
+  background: #3a3a3a;
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
 
 /* Row states */
@@ -121,4 +126,29 @@ tbody tr:hover {
 .detail-btn {
   text-align: center;
   font-weight: bold;
+}
+
+/* TABLE CONTAINER WITH SCROLL */
+.table-container {
+  height: 350px; /* Altura definida */
+  overflow-y: auto;
+  background: #3a3a3a;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+/* Scroll Blanco */
+.table-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+/* Prevent horizontal scroll */
+.table-scroll {
+  width: 100%;
+  overflow-x: hidden;
 }
