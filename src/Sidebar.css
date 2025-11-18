@@ -58,7 +58,7 @@ body {
   font-size: 15px;
   justify-content: flex-start;
   align-items: center;
-  gap: 15px; /* AUMENTAMOS ESPACIO */
+  gap: 15px; 
   font-weight: 500;
 
   margin-bottom: 60px;
@@ -68,7 +68,7 @@ body {
 
 .sidebar-menu svg,
 .logout-btn svg {
-  font-size: 22px; /* un poquito más grandes */
+  font-size: 22px; 
 }
 
 .logout-btn svg {

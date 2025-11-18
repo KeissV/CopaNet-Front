@@ -11,7 +11,7 @@ export default function TeamsPage() {
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-  // 🔥 Datos de ejemplo (mientras no hay Backend)
+
   const equiposData = [
     {
       id: "#4568909",
@@ -54,7 +54,7 @@ export default function TeamsPage() {
 
       <main className="teams-main">
 
-        {/* ===== BUSCADOR ===== */}
+
         <div className="search-row">
           <div className="search-bar">
             <input type="text" placeholder="Buscar" />
@@ -67,7 +67,7 @@ export default function TeamsPage() {
           </div>
         </div>
 
-        {/* ===== SOLICITUDES ===== */}
+
         <div className="teams-actions-row">
           <button
             className="btn-solicitudes-teams"
@@ -78,7 +78,7 @@ export default function TeamsPage() {
           </button>
         </div>
 
-        {/* ===== TABLA ===== */}
+
         <div className="teams-table-container">
           <table className="teams-table">
             <thead>
@@ -121,7 +121,7 @@ export default function TeamsPage() {
           </table>
         </div>
 
-        {/* ===== MODAL ELIMINAR ===== */}
+
         {showDeleteModal && (
           <div className="delete-modal-overlay">
             <div className="delete-modal">
@@ -151,7 +151,7 @@ export default function TeamsPage() {
             </div>
           )}
 
-          {/* ===== POPUP DE ÉXITO ===== */}
+
           {showSuccessMessage && (
             <div className="success-popup">
               <span>Equipo eliminado correctamente</span>

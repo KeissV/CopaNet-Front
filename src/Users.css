@@ -1,4 +1,4 @@
-/* ==== CONTENEDOR GENERAL ==== */
+
 
 .users-container {
   display: flex;
@@ -14,18 +14,17 @@
   height: 100vh; 
 }
 
-/* ==== BUSCADOR ==== */
 
 .search-row {
   display: flex;
   align-items: center;
-  gap: 16px;          /* antes espacio gigante */
+  gap: 16px;         
   margin-bottom: 10px;
 }
 
 .search-bar {
-  flex: 1;            /* ocupa espacio natural */
-  max-width: 700px;   /* evita romper pantalla */
+  flex: 1;          
+  max-width: 700px;   
   background: black;
   border-radius: 12px;
   padding: 0 18px;
@@ -65,7 +64,7 @@
 }
 
 .btn-purple {
-  background: #AF0D97; /* morado más claro */
+  background: #AF0D97; 
   color: white;
   border: none;
   padding: 10px 22px;
@@ -75,13 +74,12 @@
   font-weight: 600;
 }
 
-/* ==== BOTONES REGISTRAR / SOLICITUDES ==== */
 
 .actions-row {
   display: flex;
-  justify-content: center;   /* Los centra sin separarlos demasiado */
-  gap: 25px;                 /* Espacio real entre ambos botones */
-  margin-top: 60px;          /* Baja el bloque */
+  justify-content: center;   
+  gap: 25px;                 
+  margin-top: 60px;        
   margin-bottom: 25px;
 }
 
@@ -90,8 +88,8 @@
   flex: 1;
   background: #19cf32;
   border-radius: 16px;
-  padding: 12px 18px;    /* antes gigante */
-  font-size: 22px;       /* antes 26px */
+  padding: 12px 18px;   
+  font-size: 22px;       
   font-weight: 700;
   color: white;
   display: flex;
@@ -116,11 +114,10 @@
   border: none;
 }
 
-/* ==== TABLA DE USUARIOS ==== */
 
 .users-table-container {
   width: 100%;
-  background: #4a4a4a; /* gris más claro y uniforme */
+  background: #4a4a4a; 
   border-radius: 18px;
   padding: 14px 18px;
   margin-top: 5px;
@@ -153,7 +150,6 @@
   gap: 12px;
 }
 
-/* ==== BOTONES DE ACCIÓN ==== */
 
 .btn-delete {
   background: #c40000;
@@ -166,7 +162,7 @@
 }
 
 .btn-modify {
-  background: #AF0D97; /* morado más claro */
+  background: #AF0D97; 
   color: white;
   padding: 8px 18px;
   border-radius: 20px;
@@ -175,34 +171,33 @@
   font-weight: 600;
 }
 
-/* Elimina scroll horizontal en toda la vista */
+
 body,
 .users-main {
   overflow-x: hidden !important;
 }
 
-/* ===== SCROLL TIPO DASHBOARD (BLANCO Y REDONDEADO) PARA USUARIOS ===== */
 
 .users-table-container::-webkit-scrollbar {
-  width: 8px;          /* Delgadito */
+  width: 8px;         
 }
 
 .users-table-container::-webkit-scrollbar-track {
-  background: transparent;  /* invisible */
+  background: transparent;  
 }
 
 .users-table-container::-webkit-scrollbar-thumb {
-  background-color: #ffffff !important; /* scroll BLANCO */
-  border-radius: 10px;                  /* super redondeado */
-  border: 2px solid transparent;        /* separación visual */
+  background-color: #ffffff !important; 
+  border-radius: 10px;                  
+  border: 2px solid transparent;        
 }
 
 .users-table-container {
   scrollbar-width: thin;
-  scrollbar-color: #ffffff transparent; /* Firefox */
+  scrollbar-color: #ffffff transparent; 
 }
 
-/* ===== OVERLAY ===== */
+
 .delete-overlay {
   position: fixed;
   top: 0;
@@ -216,17 +211,17 @@ body,
   z-index: 2000;
 }
 
-/* ===== MODAL BOX ===== */
+
 .delete-modal-box {
   width: 520px;
   background: black;
   padding: 35px 40px;
-  border-radius: 6px;          /* un poco cuadrado como Figma */
+  border-radius: 6px;          
   color: white;
   text-align: center;
 }
 
-/* ===== TITLES ===== */
+
 .delete-title {
   font-size: 20px;
   margin-bottom: 10px;
@@ -238,7 +233,7 @@ body,
   margin-bottom: 25px;
 }
 
-/* ===== INPUTS ===== */
+
 .delete-input {
   width: 100%;
   background: #4a4a4a;
@@ -250,7 +245,7 @@ body,
   margin-bottom: 15px;
 }
 
-/* ===== BUTTONS ===== */
+
 .delete-buttons {
   display: flex;
   justify-content: center;
@@ -280,7 +275,7 @@ body,
   cursor: pointer;
 }
 
-/* ===== POPUP ===== */
+
 .popup-delete-success {
   position: fixed;
   top: 20%;

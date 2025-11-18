@@ -1,4 +1,4 @@
-/* === CONTENEDOR GENERAL === */
+
 .edit-container {
   display: flex;
   background: #1e1e1e;
@@ -11,7 +11,7 @@
   padding: 40px 50px;
 }
 
-/* === TÍTULOS === */
+
 .edit-title {
   font-size: 32px;
   font-weight: 700;
@@ -23,7 +23,7 @@
   font-size: 15px;
 }
 
-/* === FORMULARIO === */
+
 .edit-form {
   margin-top: 35px;
   background: #1e1e1e;
@@ -52,7 +52,7 @@
   opacity: 0.6;
 }
 
-/* === PASSWORD FIELD === */
+
 .password-wrapper {
   flex: 1;
   display: flex;
@@ -78,7 +78,7 @@
   color: white;
 }
 
-/* === BOTÓN MODIFICAR === */
+
 .btn-edit {
   background: #93278f;
   padding: 12px 22px;
@@ -91,7 +91,7 @@
   margin-top: 10px;
 }
 
-/* === POPUP === */
+
 .popup-edit {
   position: fixed;
   top: 20%;
@@ -117,7 +117,7 @@
   color: #19cf32;
 }
 
-/* ANIMACIÓN */
+
 @keyframes fadeInOut {
   0% { opacity: 0; transform: translateX(20px); }
   10% { opacity: 1; transform: translateX(0); }
@@ -125,7 +125,7 @@
   100% { opacity: 0; transform: translateX(20px); }
 }
 
-/* ===== BOTÓN VOLVER ===== */
+
 .btn-back {
   background: none;
   color: white;

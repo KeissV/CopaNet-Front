@@ -20,18 +20,18 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
 
-  // 🔥 CONTROL DE PANTALLAS DE RECUPERACIÓN (email → code → newpass)
+
   const [screen, setScreen] = useState(null);
 
   const openRecovery = () => {
     console.log("openRecovery called");
-    setScreen("email"); // inicia en la pantalla de correo
+    setScreen("email"); 
   };
 
 
   return (
     <>
-      {/* ======================= LOGIN ======================= */}
+
       <Box
         sx={{
           minHeight: "100vh",
@@ -42,7 +42,7 @@ export default function LoginPage() {
           position: "relative",
         }}
       >
-        {/* TEXTO IZQUIERDO */}
+
         <Box
           sx={{
             flex: 1,
@@ -63,7 +63,7 @@ export default function LoginPage() {
           </Typography>
         </Box>
 
-        {/* PANEL LOGIN */}
+
         <Paper
           sx={{
             width: 420,
@@ -89,7 +89,7 @@ export default function LoginPage() {
             Inicia sesión para administrar torneos.
           </Typography>
 
-          {/* USUARIO */}
+
           <Typography sx={{ color: "#000", mb: 1, mt: 2 }} fontWeight="bold">
             Correo electrónico
           </Typography>
@@ -106,7 +106,7 @@ export default function LoginPage() {
             sx={{ mb: 3 }}
           />
 
-          {/* CONTRASEÑA */}
+
           <Typography sx={{ color: "#000", mb: 1, mt: 3 }} fontWeight="bold">
             Contraseña
           </Typography>
@@ -161,7 +161,7 @@ export default function LoginPage() {
         </Paper>
       </Box>
 
-      {/* ======================= PANTALLAS DE RECUPERACIÓN (EN OVERLAY) ======================= */}
+
 
       {screen === "email" && (
         <Box

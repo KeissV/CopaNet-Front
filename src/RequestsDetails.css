@@ -1,4 +1,3 @@
-/* ======== MODAL DETALLE ======== */
 
 .detalle-modal-card {
   width: 45%;
@@ -78,8 +77,6 @@
 }
 
 
-/* ======== POPUPS ESTILO MEJORADO ======== */
-
 .popup {
   position: fixed;
   top: 20px;
@@ -95,14 +92,13 @@
   align-items: center;
   justify-content: center;
   gap: 14px;
-  width: fit-content; /* No gigante */
+  width: fit-content; 
   color: #ffffff;
   text-align: center;
   opacity: 0;
   animation: fadePopup 2.2s ease forwards;
 }
 
-/* Fade suave */
 @keyframes fadePopup {
   0% { opacity: 0; }
   10% { opacity: 1; }
@@ -110,7 +106,7 @@
   100% { opacity: 0; }
 }
 
-/* Iconos en su color */
+
 .popup.success .icon {
   color: #00e62e;
 }
@@ -119,7 +115,7 @@
   color: #ff2b2b;
 }
 
-/* Tamaño icono */
+
 .popup .icon {
   font-size: 26px;
 }

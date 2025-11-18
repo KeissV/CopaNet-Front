@@ -26,7 +26,7 @@ export default function Sidebar() {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        navigate("/"); // Vuelve al Login
+        navigate("/");
       }
     });
   };

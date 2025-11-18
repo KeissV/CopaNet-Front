@@ -1,4 +1,4 @@
-/* ===== LAYOUT ===== */
+
 .register-container {
   display: flex;
   min-height: 100vh;
@@ -11,7 +11,7 @@
   color: white;
 }
 
-/* ===== TÍTULO ===== */
+
 .register-title {
   font-size: 36px;
   font-weight: 600;
@@ -23,7 +23,7 @@
   margin-bottom: 35px;
 }
 
-/* ===== FORMULARIO ===== */
+
 .register-box {
   width: 70%;
   background: #1e1e1e;
@@ -48,7 +48,7 @@
   font-size: 16px;
 }
 
-/* ===== BOTÓN DERECHA ===== */
+
 .btn-right {
   display: flex;
   justify-content: flex-end;
@@ -68,12 +68,12 @@
 
 .register-success-popup {
   position: fixed;
-  top: 50%;              /* centrado vertical aprox */
-  right: 80px;           /* pegado al lado derecho como en Figma */
+  top: 50%;             
+  right: 80px;          
   transform: translateY(-50%);
   background: #000000;
   padding: 16px 26px;
-  border-radius: 16px;   /* esquinas redondeadas */
+  border-radius: 16px;   
   display: flex;
   align-items: center;
   gap: 10px;
@@ -88,10 +88,10 @@
 
 .register-success-icon {
   font-size: 26px;
-  color: #19cf32;        /* check verde */
+  color: #19cf32;       
 }
 
-/* Si aún no tienes esta animación aquí, copiala de otra pantalla o añádela */
+
 @keyframes fadeInOut {
   0% { opacity: 0; transform: translateY(-50%) translateX(10px); }
   10% { opacity: 1; transform: translateY(-50%) translateX(0); }

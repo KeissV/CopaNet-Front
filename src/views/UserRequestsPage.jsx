@@ -9,7 +9,7 @@ import { useState } from "react";
 
 export default function UsuarioSolicitudesPage() {
   const navigate = useNavigate();
-  const [showPopup, setShowPopup] = useState(null); // "ok" | "no"
+  const [showPopup, setShowPopup] = useState(null); 
   const [selectedRow, setSelectedRow] = useState(null);
 
   const solicitudes = [
@@ -34,12 +34,11 @@ export default function UsuarioSolicitudesPage() {
 
       <main className="solicitudes-main">
 
-        {/* VOLVER */}
+
         <button className="btn-back" onClick={() => navigate("/users")}>
           <ArrowBackIcon /> Volver
         </button>
 
-        {/* BUSCADOR */}
         <div className="search-row">
           <div className="search-bar">
             <input type="text" placeholder="Buscar" />
@@ -54,10 +53,10 @@ export default function UsuarioSolicitudesPage() {
           </div>
         </div>
 
-        {/* TÍTULO */}
+
         <h1 className="solicitudes-title">Solicitudes de registro</h1>
 
-        {/* TABLA */}
+
         <div className="solicitudes-table-container">
           <table className="solicitudes-table">
             <thead>
@@ -110,7 +109,7 @@ export default function UsuarioSolicitudesPage() {
           </table>
         </div>
 
-        {/* POPUPS */}
+
         {showPopup === "ok" && (
           <div className="popup success">
             Solicitud aprobada <CheckIcon className="icon" />

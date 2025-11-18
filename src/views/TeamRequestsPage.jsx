@@ -90,12 +90,12 @@ export default function TeamRequestsPage() {
 
       <main className="equipos-main">
 
-        {/* Botón Volver */}
+
         <button className="btn-back" onClick={handleBack}>
           <ArrowBackIcon /> Volver
         </button>
 
-        {/* Fila de búsqueda */}
+
         <div className="search-row">
           <div className="search-bar">
             <input type="text" placeholder="Buscar" />
@@ -110,10 +110,10 @@ export default function TeamRequestsPage() {
           </div>
         </div>
 
-        {/* Título */}
+
         <h1 className="equipos-title">Solicitudes Modificación de Plantilla</h1>
 
-        {/* Tabla */}
+
         <div className="table-container">
           <div className="table-scroll">
             <table>
@@ -147,9 +147,9 @@ export default function TeamRequestsPage() {
 
 
 
-        {/* ================= MODAL DETALLE ================= */}
+
         {selectedSolicitud && (
-          <div className="delete-modal-overlay"> {/* Reutilizamos el overlay del modal */}
+          <div className="delete-modal-overlay"> 
             <div className="detalle-modal-card">
               <h2>Detalles de solicitud</h2>
 
@@ -184,7 +184,7 @@ export default function TeamRequestsPage() {
           </div>
         )}
 
-        {/* POPUPS */}
+
        {showMessage === "ok" && (
   <div className="popup success">
     <span>Solicitud de modificación aprobada</span>

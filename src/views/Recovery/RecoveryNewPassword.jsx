@@ -36,7 +36,6 @@ export default function RecoveryNewPassword({ onFinish, onBack }) {
 
       <LoopIcon sx={{ fontSize: 70, color: "#ff6600", mb: 3 }} />
 
-      {/* NUEVA CONTRASEÑA */}
       <TextField
         fullWidth
         type={showPass1 ? "text" : "password"}
@@ -62,7 +61,6 @@ export default function RecoveryNewPassword({ onFinish, onBack }) {
         sx={{ mb: 3 }}
       />
 
-      {/* CONFIRMAR CONTRASEÑA */}
       <TextField
         fullWidth
         type={showPass2 ? "text" : "password"}

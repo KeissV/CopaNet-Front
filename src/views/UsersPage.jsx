@@ -24,7 +24,7 @@ export default function UsersPage() {
 
       <main className="users-main">
 
-        {/* BUSCADOR */}
+
         <div className="search-row">
           <div className="search-bar">
             <input type="text" placeholder="Buscar" />
@@ -37,11 +37,11 @@ export default function UsersPage() {
           </div>
         </div>
 
-        {/* BOTONES REGISTRAR / SOLICITUDES */}
+
         <div className="actions-row">
           <button
             className="btn-register"
-            onClick={() => navigate("/user/register")}  // 👈 AQUÍ LA NAVEGACIÓN
+            onClick={() => navigate("/user/register")}  
           >
             <PersonAddAltIcon style={{ marginRight: "10px" }} />
             Registrar
@@ -56,7 +56,7 @@ export default function UsersPage() {
           </button>
         </div>
 
-        {/* TABLA USUARIOS */}
+
         <div className="users-table-container">
           <table className="users-table">
             <thead>
@@ -79,7 +79,7 @@ export default function UsersPage() {
                 <td className="td-actions">
                   <button className="btn-delete" onClick={(e) => {
                     e.stopPropagation();
-                    setSelectedUser("Laura Jiménez");// o user.name dependiendo de tu campo
+                    setSelectedUser("Laura Jiménez");
                     setShowDeleteModal(true);
                   }}
                   >Eliminar</button>

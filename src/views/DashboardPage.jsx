@@ -7,12 +7,12 @@ export default function DashboardPage() {
       <Sidebar />
 
       <main className="dashboard-main">
-        {/* Título general, arriba de todo el contenido */}
+
         <h1 className="dashboard-title">Panel de administración</h1>
 
-        {/* Dos columnas: IZQUIERDA (tarjetas+torneos) / DERECHA (notificaciones) */}
+
         <div className="dashboard-columns">
-          {/* COLUMNA IZQUIERDA */}
+
           <div className="dashboard-left">
             <div className="stats-grid">
               <div className="stat-card">
@@ -36,7 +36,7 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            {/* Torneos en curso */}
+
             <div className="tournaments-section">
               <h2 className="section-title">Torneos en curso</h2>
 
@@ -87,7 +87,7 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          {/* COLUMNA DERECHA – NOTIFICACIONES */}
+
           <div className="notifications-section">
             <div className="notifications-card">
               <h2 className="notifications-title">Notificaciones</h2>

@@ -33,7 +33,6 @@ export default function UserRegisterPage() {
                     Ingrese información personal y espere la aprobación de administración.
                 </p>
 
-                {/* FORMULARIO */}
                 <form className="register-box" onSubmit={handleSubmit}>
 
                     <div className="form-row">
@@ -60,11 +59,11 @@ export default function UserRegisterPage() {
                     <div className="btn-right">
                         <button className="btn-submit" type="submit"
                             onClick={() => {
-                                setShowSuccess(true);     // Mostrar popup
+                                setShowSuccess(true);     
 
                                 setTimeout(() => {
-                                    setShowSuccess(false);  // Ocultar popup
-                                    navigate("/users");     // Regresar a usuarios
+                                    setShowSuccess(false);  
+                                    navigate("/users");     
                                 }, 2500);
                             }}
                         >
@@ -74,7 +73,7 @@ export default function UserRegisterPage() {
 
                 </form>
 
-                {/* POPUP DE ÉXITO */}
+
                 {showSuccess && (
                     <div className="register-success-popup">
                         <span>Solicitud de usuario enviada correctamente</span>

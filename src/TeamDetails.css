@@ -1,7 +1,7 @@
 .team-details-container {
   display: flex;
   min-height: 100vh;
-  background: #2d2d2d; /* Como el fondo del mockup */
+  background: #2d2d2d; 
 }
 
 .team-details-main {
@@ -10,7 +10,7 @@
   color: white;
 }
 
-/* Botón volver */
+
 .btn-back {
   background: none;
   border: none;
@@ -26,14 +26,13 @@
   color: #ff6a00;
 }
 
-/* Título principal */
 .details-title {
   font-size: 30px;
   font-weight: 800;
   margin-bottom: 28px;
 }
 
-/* Información superior estilo Figma */
+
 .info-grid {
   width: 88%;
   margin-bottom: 35px;
@@ -44,7 +43,7 @@
   font-size: 15px;
 }
 
-/* Naranja en títulos */
+
 .section-title {
   width: 88%;
   margin: 20px 0 12px;
@@ -53,7 +52,7 @@
   font-weight: 700;
 }
 
-/* Tablas estilo Figma */
+
 .details-table {
   width: 88%;
   background: #000000;
@@ -84,12 +83,12 @@
   color: rgba(255,255,255,0.9);
 }
 
-/* Hover sutil */
+
 .details-table tbody tr:hover {
   background: rgba(255,255,255,0.08);
 }
 
-/* Scroll blanco fino */
+
 .details-table::-webkit-scrollbar {
   width: 6px;
 }

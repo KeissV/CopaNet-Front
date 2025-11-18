@@ -71,7 +71,6 @@ export default function UserEditPage() {
                 </div>
             </main>
 
-            {/* Pop-up éxito */}
             {showPopup && (
                 <div className="popup-edit success">
                     Usuario modificado correctamente <CheckIcon className="icon" />

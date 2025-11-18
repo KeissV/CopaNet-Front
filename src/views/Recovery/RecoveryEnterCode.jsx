@@ -13,10 +13,10 @@ export default function RecoveryEnterCode({ onNext, onBack }) {
   const handleChange = (e, index) => {
     const value = e.target.value;
 
-    // Solo números
+  
     if (!/^[0-9]?$/.test(value)) return;
 
-    // Avanza automáticamente
+
     if (value && index < 3) {
       inputRefs[index + 1].current?.focus();
     }
@@ -54,7 +54,6 @@ export default function RecoveryEnterCode({ onNext, onBack }) {
         <span style={{ color: "#ff6600" }}>********@gmail.com</span>
       </Typography>
 
-      {/* Cajas del código (ahora sí funcionales) */}
       <Box
         sx={{
           display: "flex",
@@ -113,7 +112,7 @@ export default function RecoveryEnterCode({ onNext, onBack }) {
           cursor: "pointer",
           fontSize: "14px",
         }}
-        onClick={onBack}  // 👈🔥 ahora funciona
+        onClick={onBack} 
       >
         Volver a Iniciar Sesión
       </Typography>

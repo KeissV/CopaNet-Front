@@ -9,7 +9,6 @@ export default function AuditPage() {
 
       <main className="audit-main">
 
-        {/* === BUSCADOR === */}
         <div className="audit-search-row">
           <div className="audit-search-bar">
             <input type="text" placeholder="Buscar" />
@@ -22,7 +21,7 @@ export default function AuditPage() {
           </div>
         </div>
 
-        {/* === TABLA === */}
+
         <div className="audit-table-container">
           <table className="audit-table">
             <thead>
@@ -221,7 +220,7 @@ export default function AuditPage() {
           </table>
         </div>
 
-        {/* === EXPORTAR === */}
+
         <div className="audit-export-row">
           <button className="btn-export">Exportar</button>
         </div>

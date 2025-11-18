@@ -1,4 +1,4 @@
-/* ===== LAYOUT GENERAL ===== */
+
 .solicitudes-container {
   display: flex;
   min-height: 100vh;
@@ -10,11 +10,11 @@
   flex: 1;
   padding: 25px 40px;
   color: white;
-  height: 100vh;           /* llenar vertical */
+  height: 100vh;           
   overflow-y: hidden;
 }
 
-/* ===== BOTÓN VOLVER ===== */
+
 .btn-back {
   background: none;
   color: white;
@@ -27,7 +27,7 @@
   margin-bottom: 15px;
 }
 
-/* ===== BUSCADOR ===== */
+
 .search-row {
   display: flex;
   justify-content: space-between;
@@ -82,14 +82,14 @@
   cursor: pointer;
 }
 
-/* ===== TÍTULO ===== */
+
 .solicitudes-title {
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 20px;
 }
 
-/* ===== TABLA ===== */
+
 
 .solicitudes-table-container {
   width: 100%;
@@ -97,8 +97,8 @@
   border-radius: 16px;
   padding: 20px;
   
-  max-height: 420px;     /* el límite REAL */
-  overflow-y: auto;      /* scroll bonito */
+  max-height: 420px;    
+  overflow-y: auto;      
   box-sizing: border-box;
 margin-bottom: 40px !important;
 }
@@ -130,7 +130,7 @@ margin-bottom: 40px !important;
   font-size: 16px;
 }
 
-/* ===== ROW STATES ===== */
+
 tbody tr:hover {
   background: rgba(147, 39, 143, 0.35);
   cursor: pointer;
@@ -140,7 +140,7 @@ tbody tr:hover {
   background: #93278f !important;
 }
 
-/* ===== BOTONES ACEPTAR / RECHAZAR ===== */
+
 .btn-accept {
   background: #19cf32;
   color: white;
@@ -163,30 +163,28 @@ tbody tr:hover {
   font-weight: 600;
 }
 
-/* =========================================
-   SCROLL BONITO — MISMO DE DASHBOARD/EQUIPOS
-========================================= */
+
 .solicitudes-table-container::-webkit-scrollbar {
   width: 8px;
 }
 
 .solicitudes-table-container::-webkit-scrollbar-track {
-  background: transparent;   /* invisible */
+  background: transparent;   
 }
 
 .solicitudes-table-container::-webkit-scrollbar-thumb {
   background-color: #ffffff !important; 
   border-radius: 10px;
-  border: 2px solid transparent; /* separación */
+  border: 2px solid transparent; 
 }
 
-/* Firefox */
+
 .solicitudes-table-container {
   scrollbar-width: thin;
   scrollbar-color: #ffffff transparent;
 }
 
-/* ===== POPUPS ===== */
+
 .popup {
   position: fixed;
   top: 20%;
@@ -217,7 +215,6 @@ tbody tr:hover {
   color: #c40000;
 }
 
-/* ANIMACIÓN */
 @keyframes fadeInOut {
   0% { opacity: 0; transform: translate(-50%, 10px); }
   10% { opacity: 1; transform: translate(-50%, 0); }
@@ -229,5 +226,5 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: #1e1e1e !important; /* negro REAL, sobreescribe cualquier cosa */
+  background: #1e1e1e !important; 
 }

@@ -1,4 +1,4 @@
-/* ===== CONTENEDOR GENERAL ===== */
+
 .teams-container {
   display: flex;
   background: #1e1e1e;
@@ -13,7 +13,7 @@
 }
 
 
-/* ===== BUSCADOR ===== */
+
 .teams-search-row {
   display: flex;
   align-items: center;
@@ -73,10 +73,10 @@
 }
 
 
-/* ===== SOLICITUDES ===== */
+
 .teams-actions-row {
   display: flex;
-  justify-content: flex-end; /* 👉 Lo manda a la derecha */
+  justify-content: flex-end; 
   margin-top: 50px;
   margin-bottom: 25px;
 }
@@ -84,7 +84,7 @@
 .btn-solicitudes-teams {
   background: #d4d4d4;
   border-radius: 16px;
-  padding: 12px 18px;        /* 👉 ALARGA horizontal igual que en Usuarios */
+  padding: 12px 18px;        
   font-size: 22px;
   font-weight: 700;
   color: black;
@@ -94,8 +94,8 @@
   cursor: pointer;
   border: none;
 
-  min-width: 420px;          /* 👉 MISMO efecto de “botón largo” */
-  max-width: 480px;          /* 👈 Evita que se haga enorme */
+  min-width: 420px;          
+  max-width: 480px;          
 }
 
 .teams-icon {
@@ -105,11 +105,9 @@
 
 
 
-
-/* ===== TABLA ===== */
 .teams-table-container {
   width: 100%;
-  background: #4a4a4a; /* gris más claro y uniforme */
+  background: #4a4a4a; 
   border-radius: 18px;
   padding: 14px 18px;
   margin-top: 5px;
@@ -153,39 +151,38 @@
 }
 
 
-/* BLOQUEAR SCROLL HORIZONTAL */
 body,
 .teams-container,
 .teams-main {
   overflow-x: hidden !important;
 }
 
-/* ===== OVERLAY DEL MODAL ===== */
+
 .delete-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.65); /* fondo oscuro */
+  background: rgba(0, 0, 0, 0.65); 
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999; /* encima de todo */
+  z-index: 999; 
 }
 
-/* ===== CONTENEDOR DEL MODAL ===== */
+
 .delete-modal {
-  background: #1b1b1b; /* Negro elegante (según Figma) */
+  background: #1b1b1b; 
   padding: 30px 40px;
   border-radius: 18px;
-  width: 520px;                 /* Tamaño perfecto */
+  width: 520px;                 
   text-align: center;
   color: white;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
 }
 
-/* Subtítulo */
+
 .modal-subtext {
   margin-top: 10px;
   margin-bottom: 25px;
@@ -193,7 +190,7 @@ body,
   color: #cfcfcf;
 }
 
-/* Inputs */
+
 .modal-input {
   width: 100%;
   padding: 10px 14px;
@@ -205,7 +202,7 @@ body,
   font-size: 15px;
 }
 
-/* Botones */
+
 .modal-buttons {
   display: flex;
   justify-content: space-between;
@@ -235,28 +232,27 @@ body,
 }
 
 
-/* ===== SCROLL TIPO DASHBOARD (BLANCO Y REDONDEADO) ===== */
 
 .teams-table-container::-webkit-scrollbar {
-  width: 8px;          /* Delgadito */
+  width: 8px;          
 }
 
 .teams-table-container::-webkit-scrollbar-track {
-  background: transparent;  /* invisible */
+  background: transparent;  
 }
 
 .teams-table-container::-webkit-scrollbar-thumb {
-  background-color: #ffffff !important; /* scroll BLANCO */
-  border-radius: 10px;                  /* super redondeado */
-  border: 2px solid transparent;        /* separación visual */
+  background-color: #ffffff !important; 
+  border-radius: 10px;                  
+  border: 2px solid transparent;        
 }
 
 .teams-table-container {
   scrollbar-width: thin;
-  scrollbar-color: #ffffff transparent; /* Firefox */
+  scrollbar-color: #ffffff transparent; 
 }
 
-/* ===== POPUP DE ÉXITO ===== */
+
 .success-popup {
   position: fixed;
   top: 20%;
@@ -273,7 +269,7 @@ body,
   gap: 12px;
   z-index: 2000;
 
-  /* Animación */
+
   opacity: 0;
   animation: fadeInOut 2.5s ease forwards;
 }
@@ -284,7 +280,7 @@ body,
   margin-left: 6px;
 }
 
-/* Animación suave */
+
 @keyframes fadeInOut {
   0% { opacity: 0; transform: translateX(-50%) translateY(10px); }
   10% { opacity: 1; transform: translateX(-50%) translateY(0); }
