@@ -4,8 +4,8 @@ import DashboardPage from "./views/DashboardPage";
 import UsersPage from "./views/UsersPage";
 import TeamsPage from "./views/TeamsPage";
 import AuditPage from "./views/AuditPage";
-import EquipoSolicitudesPage from "./views/EquipoSolicitudesPage";
-import SolicitudDetallePage from "./views/SolicitudDetallePage";
+import TeamRequestsPage from "./views/TeamRequestsPage";
+
 
 
 
@@ -19,8 +19,10 @@ function App() {
         <Route path="/users" element={<UsersPage />} />
         <Route path="/teams" element={<TeamsPage />} />
         <Route path="/audit" element={<AuditPage />} />
-        <Route path="/equipos/solicitudes" element={<EquipoSolicitudesPage />} />
-        <Route path="/equipos/solicitud" element={<SolicitudDetallePage />} />
+        <Route path="/teams/requests" element={<TeamRequestsPage />} />
+
+
+
 
       </Routes>
     </BrowserRouter>

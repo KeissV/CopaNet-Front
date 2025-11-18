@@ -44,7 +44,8 @@ export default function TeamsPage() {
         <div className="teams-actions-row">
           <button
             className="btn-solicitudes-teams"
-            onClick={() => navigate("/equipos/solicitudes")} // 👈 NAVEGA A LA VISTA DE SOLICITUDES
+            onClick={() => navigate("/teams/requests")}
+        
           >
             <HelpOutlineIcon style={{ marginRight: "10px" }} />
             Solicitudes

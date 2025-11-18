@@ -1,0 +1,122 @@
+/* === MODAL CARD === */
+.detalle-modal-card {
+  width: 45%;
+  background: #000000;
+  padding: 28px 35px;
+  border-radius: 12px;
+  border: 2px solid #ff6a00;
+  box-shadow: 0 0 18px rgba(255, 106, 0, 0.35);
+  animation: fadeInCard 0.3s ease-out;
+  color: white;
+}
+
+/* === TEXTAREA === */
+.detalle-area {
+  width: 100%;
+  height: 95px;
+  border-radius: 10px;
+  margin-top: 5px;
+  margin-bottom: 25px;
+  border: none;
+  background: #222;
+  color: white;
+  padding: 12px;
+  resize: none;
+  outline: none;
+}
+
+/* === MODAL BUTTONS === */
+.acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn-approve {
+  background: #00b300;
+  border: none;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-reject {
+  background: #b30000;
+  border: none;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-cancel {
+  background: #3a3a3a;
+  border: none;
+  color: white;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.btn-cancel:hover {
+  background: #505050;
+}
+
+/* === POPUP NOTIFICATIONS === */
+.popup {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200000; /* Sobre todo */
+  background: #000;
+  padding: 18px 28px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: showPopup 2s ease forwards;
+}
+
+/* Animación */
+@keyframes showPopup {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+}
+
+/* Estados popup */
+.popup.success {
+  border: 2px solid #00e62e;
+  color: #00e62e;
+}
+
+.popup.reject {
+  border: 2px solid #ff2b2b;
+  color: #ff2b2b;
+}
+
+.popup .icon {
+  font-size: 28px;
+}
