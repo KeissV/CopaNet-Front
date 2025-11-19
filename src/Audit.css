@@ -96,6 +96,13 @@ max-height: 420px;
   padding-bottom: 14px;
 }
 
+.audit-table td:nth-child(2) {
+  width: 100px;     
+  min-width: 100px;
+  max-width: 200px; 
+  white-space: nowrap; 
+}
+
 .audit-table td {
   padding: 14px 10px;
   font-size: 15px;
