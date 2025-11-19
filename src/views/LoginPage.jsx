@@ -61,6 +61,8 @@ export default function LoginPage() {
       const data = await res.json(); // { usuarioId, email, nombre, roles }
       setUsuario(data);
 
+      localStorage.setItem("token", data.token);
+
       // 2) CARGAR TABLAS SOLO SI LOGIN OK
       const resTablas = await fetch("http://localhost:8080/api/meta/tablas");
       const dataTablas = await resTablas.json();
