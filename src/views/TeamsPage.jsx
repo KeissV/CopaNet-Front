@@ -2,8 +2,9 @@ import Sidebar from "../components/Sidebar";
 import "../Teams.css";
 import SearchIcon from "@mui/icons-material/Search";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { getEquipos } from "../services/teamService";
 
 export default function TeamsPage() {
   const navigate = useNavigate();
@@ -11,42 +12,23 @@ export default function TeamsPage() {
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
+  const [equipos, setEquipos] = useState([]);
+  
+  useEffect(() => {
+      getEquipos()
+        .then(data => setEquipos(data))
+        .catch(err => console.error("Error cargando equipos:", err));
+    }, []);
 
-  const equiposData = [
-    {
-      id: "#4568909",
-      nombre: "Los Titanes",
-      dte: "José Pérez",
-      plantilla: 11,
-      estado: "Activo",
-      jugadores: [
-        { cedula: "207890123", nombre: "Luis Ramírez", camiseta: "10", posicion: "Delantero" },
-        { cedula: "209876543", nombre: "Mario López", camiseta: "8", posicion: "Mediocampista" }
-      ],
-      torneos: [
-        { nombre: "Verano 2026", estado: "Activo", fechaInicio: "12/01/2026", fechaFin: "30/04/2026" }
-      ]
-    },
-    ...Array.from({ length: 6 }).map((_, i) => ({
-      id: `00${i + 1}`,
-      nombre: `Equipo ${i + 1}`,
-      dte: `DTE ${i + 1}`,
-      plantilla: Math.floor(Math.random() * 10) + 5,
-      estado: ["Activo", "Inactivo", "Pendiente"][i % 3],
-      jugadores: [],
-      torneos: []
-    }))
-  ];
+    const openDeleteModal = (teamName) => {
+      setSelectedTeam(teamName);
+      setShowDeleteModal(true);
+    };
 
-  const openDeleteModal = (teamName) => {
-    setSelectedTeam(teamName);
-    setShowDeleteModal(true);
-  };
-
-  const closeDeleteModal = () => {
-    setShowDeleteModal(false);
-    setSelectedTeam(null);
-  };
+    const closeDeleteModal = () => {
+      setShowDeleteModal(false);
+      setSelectedTeam(null);
+    };
 
   return (
     <div className="teams-container">
@@ -79,47 +61,56 @@ export default function TeamsPage() {
         </div>
 
 
-        <div className="teams-table-container">
-          <table className="teams-table">
-            <thead>
-              <tr>
-                <th>Identificador</th>
-                <th>Equipo</th>
-                <th>DTE</th>
-                <th>Plantilla<br />(jugadores)</th>
-                <th>Estado</th>
-                <th></th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {equiposData.map((eq, i) => (
-                <tr
-                  key={i}
-                  onClick={() => navigate("/teams/details", { state: eq })}
-                  style={{ cursor: "pointer" }}
-                >
-                  <td>{eq.id}</td>
-                  <td>{eq.nombre}</td>
-                  <td>{eq.dte}</td>
-                  <td>{eq.plantilla}</td>
-                  <td>{eq.estado}</td>
-                  <td className="td-actions">
-                    <button
-                      className="btn-delete"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        openDeleteModal(eq.nombre);
-                      }}
-                    >
-                      Eliminar
-                    </button>
-                  </td>
+          <div className="teams-table-container">
+            <table className="teams-table">
+              <thead>
+                <tr>
+                  <th>Identificador</th>
+                  <th>Equipo</th>
+                  <th>DTE</th>
+                  <th>Plantilla<br />(jugadores)</th>
+                  <th>Estado</th>
+                  <th></th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+
+              <tbody>
+                {equipos.length === 0 ? (
+                  <tr>
+                    <td colSpan="6" style={{ textAlign: "center", padding: "20px" }}>
+                      No hay equipos registrados
+                    </td>
+                  </tr>
+                ) : (
+                  equipos.map((eq, i) => (
+                    <tr
+                      key={i}
+                      onClick={() => navigate("/teams/details", { state: eq })}
+                      style={{ cursor: "pointer" }}
+                    >
+                      <td>{eq.id}</td>
+                      <td>{eq.nombre}</td>
+                      <td>{eq.dte}</td>
+                      <td>{eq.plantilla}</td>
+                      <td>{eq.estado}</td>
+
+                      <td className="td-actions">
+                        <button
+                          className="btn-delete"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            openDeleteModal(eq.nombre);
+                          }}
+                        >
+                          Eliminar
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
 
 
         {showDeleteModal && (

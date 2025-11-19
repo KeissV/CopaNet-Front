@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import fondo from "../assets/fondo.jpg";
 
 import RecoveryEnterEmail from "./Recovery/RecoveryEnterEmail";
 import RecoveryEnterCode from "./Recovery/RecoveryEnterCode";
@@ -95,8 +96,13 @@ export default function LoginPage() {
           alignItems: "center",
           px: 4,
           position: "relative",
+
+          backgroundImage: `url(${fondo})`,  
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
+
 
         <Box
           sx={{
