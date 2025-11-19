@@ -22,14 +22,7 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
-  // 🔥 estados para login
-  const [email, setEmail] = useState("admin@gmail.com");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [usuario, setUsuario] = useState(null);
-  const [tablas, setTablas] = useState([]);
 
-  // 🔥 CONTROL DE PANTALLAS DE RECUPERACIÓN (email → code → newpass)
   const [screen, setScreen] = useState(null);
 
   // 🔥 estados para recuperación
@@ -37,7 +30,8 @@ export default function LoginPage() {
   const [recoveryCode, setRecoveryCode] = useState("");
 
   const openRecovery = () => {
-    setScreen("email"); // inicia en la pantalla de correo
+    console.log("openRecovery called");
+    setScreen("email"); 
   };
 
   // ====== LLAMADA AL BACKEND PARA LOGIN ======
@@ -86,7 +80,7 @@ export default function LoginPage() {
   // =========================================================
   return (
     <>
-      {/* ======================= LOGIN ======================= */}
+
       <Box
         sx={{
           minHeight: "100vh",
@@ -97,7 +91,7 @@ export default function LoginPage() {
           position: "relative",
         }}
       >
-        {/* TEXTO IZQUIERDO */}
+
         <Box
           sx={{
             flex: 1,
@@ -118,7 +112,7 @@ export default function LoginPage() {
           </Typography>
         </Box>
 
-        {/* PANEL LOGIN */}
+
         <Paper
           sx={{
             width: 420,
@@ -146,7 +140,7 @@ export default function LoginPage() {
             Inicia sesión para administrar torneos.
           </Typography>
 
-          {/* USUARIO */}
+
           <Typography sx={{ color: "#000", mb: 1, mt: 2 }} fontWeight="bold">
             Correo electrónico
           </Typography>
@@ -165,7 +159,7 @@ export default function LoginPage() {
             sx={{ mb: 3 }}
           />
 
-          {/* CONTRASEÑA */}
+
           <Typography sx={{ color: "#000", mb: 1, mt: 3 }} fontWeight="bold">
             Contraseña
           </Typography>
@@ -232,7 +226,7 @@ export default function LoginPage() {
         </Paper>
       </Box>
 
-      {/* ======================= PANTALLAS DE RECUPERACIÓN (EN OVERLAY) ======================= */}
+
 
       {screen === "email" && (
         <Box

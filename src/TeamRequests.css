@@ -22,11 +22,12 @@
   cursor: pointer;
   margin-bottom: 15px;
 }
+
 .btn-back svg {
   font-size: 20px;
 }
 
-/* Search */
+
 .search-row {
   display: flex;
   justify-content: space-between;
@@ -80,18 +81,13 @@
   gap: 6px;
 }
 
-/* Title */
+
 .equipos-title {
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 20px;
 }
 
-.table-container {
-  background: #3a3a3a;
-  border-radius: 12px;
-  padding: 17px;
-}
 
 table {
   width: 100%;
@@ -103,9 +99,18 @@ td {
   padding: 12px 10px;
   font-size: 15px;
   color: white;
+  text-align: left;
 }
 
-/* Row states */
+
+.table-container table thead th {
+  background: #3a3a3a;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+
 tbody tr {
   cursor: pointer;
 }
@@ -121,4 +126,29 @@ tbody tr:hover {
 .detail-btn {
   text-align: center;
   font-weight: bold;
+}
+
+
+.table-container {
+  height: 350px; 
+  overflow-y: auto;
+  background: #3a3a3a;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+
+.table-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+
+.table-scroll {
+  width: 100%;
+  overflow-x: hidden;
 }

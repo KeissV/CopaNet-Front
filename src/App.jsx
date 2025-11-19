@@ -4,11 +4,11 @@ import DashboardPage from "./views/DashboardPage";
 import UsersPage from "./views/UsersPage";
 import TeamsPage from "./views/TeamsPage";
 import AuditPage from "./views/AuditPage";
-import EquipoSolicitudesPage from "./views/EquipoSolicitudesPage";
-import SolicitudDetallePage from "./views/SolicitudDetallePage";
-
-
-
+import TeamRequestsPage from "./views/TeamRequestsPage";
+import TeamDetailsPage from "./views/TeamDetailsPage";
+import UserRequestsPage from "./views/UserRequestsPage"
+import UserEditPage from "./views/UserEditPage"
+import UserRegisterPage from "./views/UserRegisterPage"
 
 function App() {
   return (
@@ -19,13 +19,14 @@ function App() {
         <Route path="/users" element={<UsersPage />} />
         <Route path="/teams" element={<TeamsPage />} />
         <Route path="/audit" element={<AuditPage />} />
-        <Route path="/equipos/solicitudes" element={<EquipoSolicitudesPage />} />
-        <Route path="/equipos/solicitud" element={<SolicitudDetallePage />} />
-
+        <Route path="/teams/requests" element={<TeamRequestsPage />} />
+        <Route path="/teams/details" element={<TeamDetailsPage />} />
+        <Route path="/user/requests" element={<UserRequestsPage />} />
+        <Route path="/users/edit" element={<UserEditPage />} />
+        <Route path="/user/register" element={<UserRegisterPage />} />
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
-

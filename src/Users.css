@@ -1,4 +1,4 @@
-/* ==== CONTENEDOR GENERAL ==== */
+
 
 .users-container {
   display: flex;
@@ -10,22 +10,21 @@
 .users-main {
   flex: 1;
   padding: 25px 40px;
-  overflow-y: auto;
-  overflow-x: hidden !important;
+  overflow-y: hidden;
+  height: 100vh; 
 }
 
-/* ==== BUSCADOR ==== */
 
 .search-row {
   display: flex;
   align-items: center;
-  gap: 16px;          /* antes espacio gigante */
+  gap: 16px;         
   margin-bottom: 10px;
 }
 
 .search-bar {
-  flex: 1;            /* ocupa espacio natural */
-  max-width: 700px;   /* evita romper pantalla */
+  flex: 1;          
+  max-width: 700px;   
   background: black;
   border-radius: 12px;
   padding: 0 18px;
@@ -65,7 +64,7 @@
 }
 
 .btn-purple {
-  background: #AF0D97; /* morado más claro */
+  background: #AF0D97; 
   color: white;
   border: none;
   padding: 10px 22px;
@@ -75,13 +74,12 @@
   font-weight: 600;
 }
 
-/* ==== BOTONES REGISTRAR / SOLICITUDES ==== */
 
 .actions-row {
   display: flex;
-  justify-content: center;   /* Los centra sin separarlos demasiado */
-  gap: 25px;                 /* Espacio real entre ambos botones */
-  margin-top: 60px;          /* Baja el bloque */
+  justify-content: center;   
+  gap: 25px;                 
+  margin-top: 60px;        
   margin-bottom: 25px;
 }
 
@@ -90,8 +88,8 @@
   flex: 1;
   background: #19cf32;
   border-radius: 16px;
-  padding: 12px 18px;    /* antes gigante */
-  font-size: 22px;       /* antes 26px */
+  padding: 12px 18px;   
+  font-size: 22px;       
   font-weight: 700;
   color: white;
   display: flex;
@@ -116,11 +114,10 @@
   border: none;
 }
 
-/* ==== TABLA DE USUARIOS ==== */
 
 .users-table-container {
   width: 100%;
-  background: #4a4a4a; /* gris más claro y uniforme */
+  background: #4a4a4a; 
   border-radius: 18px;
   padding: 14px 18px;
   margin-top: 5px;
@@ -153,7 +150,6 @@
   gap: 12px;
 }
 
-/* ==== BOTONES DE ACCIÓN ==== */
 
 .btn-delete {
   background: #c40000;
@@ -166,7 +162,7 @@
 }
 
 .btn-modify {
-  background: #AF0D97; /* morado más claro */
+  background: #AF0D97; 
   color: white;
   padding: 8px 18px;
   border-radius: 20px;
@@ -175,29 +171,130 @@
   font-weight: 600;
 }
 
-/* Elimina scroll horizontal en toda la vista */
+
 body,
 .users-main {
   overflow-x: hidden !important;
 }
 
-/* ===== SCROLL TIPO DASHBOARD (BLANCO Y REDONDEADO) PARA USUARIOS ===== */
 
 .users-table-container::-webkit-scrollbar {
-  width: 8px;          /* Delgadito */
+  width: 8px;         
 }
 
 .users-table-container::-webkit-scrollbar-track {
-  background: transparent;  /* invisible */
+  background: transparent;  
 }
 
 .users-table-container::-webkit-scrollbar-thumb {
-  background-color: #ffffff !important; /* scroll BLANCO */
-  border-radius: 10px;                  /* super redondeado */
-  border: 2px solid transparent;        /* separación visual */
+  background-color: #ffffff !important; 
+  border-radius: 10px;                  
+  border: 2px solid transparent;        
 }
 
 .users-table-container {
   scrollbar-width: thin;
-  scrollbar-color: #ffffff transparent; /* Firefox */
+  scrollbar-color: #ffffff transparent; 
+}
+
+
+.delete-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+
+.delete-modal-box {
+  width: 520px;
+  background: black;
+  padding: 35px 40px;
+  border-radius: 6px;          
+  color: white;
+  text-align: center;
+}
+
+
+.delete-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.delete-subtext {
+  font-size: 14px;
+  color: #cccccc;
+  margin-bottom: 25px;
+}
+
+
+.delete-input {
+  width: 100%;
+  background: #4a4a4a;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  color: white;
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+
+.delete-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.btn-confirm-delete {
+  background: #19cf32;
+  color: white;
+  border: none;
+  padding: 10px 26px;
+  border-radius: 16px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-cancel-delete {
+  background: #c40000;
+  color: white;
+  border: none;
+  padding: 10px 26px;
+  border-radius: 16px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+
+.popup-delete-success {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: black;
+  padding: 18px 28px;
+  border-radius: 16px;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: fadeInOut 2.4s ease forwards;
+  z-index: 2500;
+}
+
+.popup-check {
+  color: #19cf32;
+  font-size: 26px;
 }

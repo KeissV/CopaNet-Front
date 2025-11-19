@@ -1,4 +1,4 @@
-/* === CONTENEDOR GENERAL === */
+
 .audit-container {
   display: flex;
   background: #1e1e1e;
@@ -12,7 +12,7 @@
   overflow-y: auto;
 }
 
-/* === BUSCADOR === */
+
 .audit-search-row {
   display: flex;
   align-items: center;
@@ -70,7 +70,6 @@
   cursor: pointer;
 }
 
-/* === TABLA === */
 .audit-table-container {
   width: 100%;
   background: #000;
@@ -78,8 +77,8 @@
   padding: 14px 18px;
   margin-top: 50px;
   box-sizing: border-box;
-  max-height: 420px;      /* altura visible */
-overflow-y: auto;       /* activa scroll interno */
+  max-height: 420px;      
+overflow-y: auto;       
 max-height: 420px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -104,12 +103,11 @@ max-height: 420px;
 }
 
 .audit-table tr:hover {
-  background: rgba(106, 30, 95, 0.6); /* morado suave */
+  background: rgba(106, 30, 95, 0.6); 
   cursor: pointer;
 }
 
 
-/* === EXPORTAR === */
 .audit-export-row {
   display: flex;
   justify-content: flex-end;
@@ -126,30 +124,28 @@ max-height: 420px;
   cursor: pointer;
 }
 
-/* Bloquear scroll horizontal */
 body,
 .audit-container,
 .audit-main {
   overflow-x: hidden !important;
 }
 
-/* ===== SCROLL TIPO DASHBOARD (BLANCO Y REDONDEADO) ===== */
 
 .audit-table-container::-webkit-scrollbar {
-  width: 8px;          /* Delgadito */
+  width: 8px;     
 }
 
 .audit-table-container::-webkit-scrollbar-track {
-  background: transparent;  /* invisible */
+  background: transparent; 
 }
 
 .audit-table-container::-webkit-scrollbar-thumb {
-  background-color: #ffffff !important; /* scroll BLANCO */
-  border-radius: 10px;                  /* super redondeado */
-  border: 2px solid transparent;        /* separación visual */
+  background-color: #ffffff !important; 
+  border-radius: 10px;                  
+  border: 2px solid transparent;        
 }
 
 .audit-table-container {
   scrollbar-width: thin;
-  scrollbar-color: #ffffff transparent; /* Firefox */
+  scrollbar-color: #ffffff transparent; 
 }

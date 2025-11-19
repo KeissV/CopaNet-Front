@@ -57,7 +57,6 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* Modo claro */
 @media (prefers-color-scheme: light) {
   body {
     color: #213547;
@@ -71,7 +70,7 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-/* CONTENEDOR NEGRO */
+
 .recover-container {
   width: 360px;
   height: 480px;
@@ -84,7 +83,7 @@ button:focus-visible {
   color: white;
 }
 
-/* TITULO NARANJA */
+
 .title-orange {
   font-size: 28px;
   font-weight: 700;
@@ -93,7 +92,7 @@ button:focus-visible {
   margin-bottom: 10px;
 }
 
-/* ICONO GRANDE */
+
 .icon-large {
   font-size: 70px;
   color: #ff6a00;
@@ -101,7 +100,6 @@ button:focus-visible {
   margin-bottom: 20px;
 }
 
-/* TEXTO DESCRIPTIVO */
 .description {
   text-align: center;
   font-size: 14px;
@@ -109,7 +107,6 @@ button:focus-visible {
   color: #fff;
 }
 
-/* INPUTS */
 .recover-input {
   width: 100%;
   height: 40px;
@@ -122,7 +119,6 @@ button:focus-visible {
   font-size: 14px;
 }
 
-/* BOTÓN PRINCIPAL */
 .recover-btn {
   width: 100%;
   height: 40px;
@@ -136,7 +132,7 @@ button:focus-visible {
   margin-top: 10px;
 }
 
-/* LINK INFERIOR */
+
 .return-link {
   margin-top: 15px;
   font-size: 13px;
@@ -145,7 +141,6 @@ button:focus-visible {
   cursor: pointer;
 }
 
-/* OTP CODES */
 .otp-wrapper {
   display: flex;
   gap: 12px;

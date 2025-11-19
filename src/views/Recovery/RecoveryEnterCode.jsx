@@ -19,7 +19,9 @@ export default function RecoveryEnterCode({ email, onNext, onBack }) {
   const handleChange = (e, index) => {
     const value = e.target.value;
 
+  
     if (!/^[0-9]?$/.test(value)) return;
+
 
     if (value && index < 3) {
       inputRefs[index + 1].current?.focus();
@@ -160,7 +162,7 @@ export default function RecoveryEnterCode({ email, onNext, onBack }) {
           cursor: "pointer",
           fontSize: "14px",
         }}
-        onClick={onBack}
+        onClick={onBack} 
       >
         Volver a Iniciar Sesión
       </Typography>
