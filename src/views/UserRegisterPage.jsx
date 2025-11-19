@@ -5,84 +5,182 @@ import CheckIcon from "@mui/icons-material/Check";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
 
-
 export default function UserRegisterPage() {
-    const [showSuccess, setShowSuccess] = useState(false);
 
-    const navigate = useNavigate();
+  const [identificacion, setIdentificacion] = useState("");
+  const [nombre, setNombre] = useState("");
+  const [email, setEmail] = useState("");
+  const [rol, setRol] = useState("");
+  const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  const [error, setError] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
 
-        setShowPopup(true);
-        setTimeout(() => setShowPopup(false), 2500);
-    };
+  const navigate = useNavigate();
 
-    return (
-        <div className="register-container">
-            <Sidebar />
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError("");
 
-            <main className="register-main">
+  // VALIDACIÓN 1: campos vacíos
+  if (!identificacion || !nombre || !email || !rol || !password || !password2) {
+    setError("Por favor complete todos los campos.");
+    return;
+  }
 
-                <button className="btn-back" onClick={() => navigate("/users")}>
-                    <ArrowBackIcon /> Volver
-                </button>
+  // VALIDACIÓN 2: identificación
+  if (!/^\d{9}$/.test(identificacion)) {
+    setError("La identificación debe tener 9 dígitos numéricos.");
+    return;
+  }
 
-                <h1 className="register-title">Registro de usuarios</h1>
-                <p className="register-subtext">
-                    Ingrese información personal y espere la aprobación de administración.
-                </p>
+  // VALIDACIÓN 3: correo
+  if (!/^[\w.-]+@(gmail\.com|hotmail\.com|yahoo\.com)$/.test(email.toLowerCase())) {
+    setError("El correo debe ser Gmail o Hotmail");
+    return;
+  }
 
-                <form className="register-box" onSubmit={handleSubmit}>
+  // VALIDACIÓN 4: contraseñas iguales
+  if (password !== password2) {
+    setError("Las contraseñas no coinciden.");
+    return;
+  }
 
-                    <div className="form-row">
-                        <input type="text" placeholder="Número de identificación" required />
-                        <input type="text" placeholder="Nombre completo" required />
-                    </div>
+  // VALIDACIÓN 5: contraseña segura
+  if (!/^(?=.*[a-zA-Z])(?=.*\d)[A-Za-z0-9]{8,}$/.test(password)) {
+    setError("La contraseña debe tener mínimo 8 caracteres alfanuméricos (letras y números).");
+    return;
+  }
 
-                    <div className="form-row">
-                        <input type="email" placeholder="Correo electrónico" required />
+  try {
+    // FETCH AL BACKEND
+    const res = await fetch("http://localhost:8080/api/usuarios/crear", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        email,
+        identificacion,
+        rol,
+        password,
+        nombre
+      }),
+    });
 
-                        <select required>
-                            <option value="">Rol</option>
-                            <option value="Jugador">Jugador</option>
-                            <option value="DTE">Usuario DTE</option>
-                            <option value="Admin">Admin</option>
-                        </select>
-                    </div>
+    const msg = await res.text();
 
-                    <div className="form-row">
-                        <input type="password" placeholder="Contraseña" required />
-                        <input type="password" placeholder="Confirmar contraseña" required />
-                    </div>
+    if (!res.ok) {
+      setError(msg);
+      return;
+    }
 
-                    <div className="btn-right">
-                        <button className="btn-submit" type="submit"
-                            onClick={() => {
-                                setShowSuccess(true);     
+    setShowSuccess(true);
 
-                                setTimeout(() => {
-                                    setShowSuccess(false);  
-                                    navigate("/users");     
-                                }, 2500);
-                            }}
-                        >
-                            Enviar solicitud
-                        </button>
-                    </div>
+    setTimeout(() => {
+      setShowSuccess(false);
+      navigate("/users");
+    }, 2500);
 
-                </form>
-
-
-                {showSuccess && (
-                    <div className="register-success-popup">
-                        <span>Solicitud de usuario enviada correctamente</span>
-                        <CheckIcon className="register-success-icon" />
-                    </div>
-                )}
+  } catch (err) {
+    setError("Error de conexión con el servidor.");
+    console.error(err);
+  }
+};
 
 
-            </main>
-        </div>
-    );
+  return (
+    <div className="register-container">
+      <Sidebar />
+
+      <main className="register-main">
+
+        <button className="btn-back" onClick={() => navigate("/users")}>
+          <ArrowBackIcon /> Volver
+        </button>
+
+        <h1 className="register-title">Registro de usuarios</h1>
+        <p className="register-subtext">
+          Ingrese información personal y espere la aprobación de administración.
+        </p>
+
+        {error && (
+          <div className="register-error">
+            {error}
+          </div>
+        )}
+
+        <form className="register-box" onSubmit={handleSubmit}>
+
+          <div className="form-row">
+            <input 
+              type="text" 
+              placeholder="Número de identificación" 
+              value={identificacion}
+              onChange={(e) => setIdentificacion(e.target.value)}
+            />
+            <input 
+              type="text" 
+              placeholder="Nombre completo" 
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
+            />
+          </div>
+
+          <div className="form-row">
+            <input 
+              type="email" 
+              placeholder="Correo electrónico" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+
+            <select 
+                value={rol}
+                onChange={(e) => setRol(e.target.value)}
+                required
+                >
+                <option value="">Seleccione un rol</option>
+                <option value="Administrador">Administrador</option>
+                <option value="DTE">Director Técnico de Equipo (DTE)</option>
+            </select>
+
+          </div>
+
+          <div className="form-row">
+            <input 
+              type="password" 
+              placeholder="Contraseña" 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <input 
+              type="password" 
+              placeholder="Confirmar contraseña" 
+              value={password2}
+              onChange={(e) => setPassword2(e.target.value)}
+            />
+          </div>
+
+          <div className="btn-right">
+            <button className="btn-submit" type="submit">
+              Enviar solicitud
+            </button>
+          </div>
+
+        </form>
+
+        {showSuccess && (
+          <div className="register-success-popup">
+            <span>Solicitud de usuario enviada correctamente</span>
+            <CheckIcon className="register-success-icon" />
+          </div>
+        )}
+
+      </main>
+    </div>
+  );
 }
+

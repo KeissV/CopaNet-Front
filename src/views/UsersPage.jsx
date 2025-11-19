@@ -1,5 +1,6 @@
 import Sidebar from "../components/Sidebar";
 import "../Users.css";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
@@ -16,7 +17,36 @@ export default function UsersPage() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   const [showDeletePopup, setShowDeletePopup] = useState(false);
+  const [usuarios, setUsuarios] = useState([]);
+  const [error, setError] = useState("");
 
+
+  useEffect(() => {
+    const cargarUsuarios = async () => {
+      try {
+        const res = await fetch("http://localhost:8080/api/usuarios/listar", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+
+        if (!res.ok) {
+          const msg = await res.text();
+          setError(msg);
+          return;
+        }
+
+        const data = await res.json();
+        setUsuarios(data);
+
+      } catch (err) {
+        console.error(err);
+        setError("Error al conectar con el servidor");
+      }
+    };
+
+    cargarUsuarios();
+  }, []);
 
   return (
     <div className="users-container">
@@ -70,133 +100,43 @@ export default function UsersPage() {
             </thead>
 
             <tbody>
-              <tr>
-                <td>00121</td>
-                <td>Laura Jiménez</td>
-                <td>laura.j@gmail.com</td>
-                <td>Admin</td>
-                <td>-</td>
-                <td className="td-actions">
-                  <button className="btn-delete" onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedUser("Laura Jiménez");
-                    setShowDeleteModal(true);
-                  }}
-                  >Eliminar</button>
-                  <button className="btn-modify" onClick={() => navigate("/users/edit")}>
-                    Modificar
-                  </button>
-                </td>
-              </tr>
+              {usuarios.length === 0 ? (
+                <tr>
+                  <td colSpan="5" style={{ textAlign: "center", padding: "20px" }}>
+                    No hay usuarios registrados
+                  </td>
+                </tr>
+              ) : (
+                usuarios.map((u, idx) => (
+                  <tr key={idx}>
+                    <td>{u.identificacion}</td>
+                    <td>{u.nombre}</td>
+                    <td>{u.rol}</td>
+                    <td>{u.estado}</td>
 
-              <tr>
-                <td>00122</td>
-                <td>Kevin Mora</td>
-                <td>kevmora@gmail.com</td>
-                <td>Jugador</td>
-                <td>Titanes FC</td>
-                <td className="td-actions">
-                  <button className="btn-delete">Eliminar</button>
-                  <button className="btn-modify">Modificar</button>
-                </td>
-              </tr>
+                    <td className="td-actions">
+                      <button
+                        className="btn-delete"
+                        onClick={() => {
+                          setSelectedUser(u.nombre);
+                          setShowDeleteModal(true);
+                        }}
+                      >
+                        Eliminar
+                      </button>
 
-              <tr>
-                <td>00123</td>
-                <td>Ana López</td>
-                <td>ana.lopez@gmail.com</td>
-                <td>Jugadora</td>
-                <td>Guerreros</td>
-                <td className="td-actions">
-                  <button className="btn-delete">Eliminar</button>
-                  <button className="btn-modify">Modificar</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>00124</td>
-                <td>Diego Vargas</td>
-                <td>dvargas@gmail.com</td>
-                <td>Entrenador</td>
-                <td>Águilas FC</td>
-                <td className="td-actions">
-                  <button className="btn-delete">Eliminar</button>
-                  <button className="btn-modify">Modificar</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>00125</td>
-                <td>María Navarro</td>
-                <td>mnavarro@gmail.com</td>
-                <td>Jugadora</td>
-                <td>Leones del Sur</td>
-                <td className="td-actions">
-                  <button className="btn-delete">Eliminar</button>
-                  <button className="btn-modify">Modificar</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>00126</td>
-                <td>José Castillo</td>
-                <td>jcastillo@gmail.com</td>
-                <td>Jugador</td>
-                <td>Lobos FC</td>
-                <td className="td-actions">
-                  <button className="btn-delete">Eliminar</button>
-                  <button className="btn-modify">Modificar</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>00127</td>
-                <td>Camila Rivera</td>
-                <td>cami.r@gmail.com</td>
-                <td>Admin</td>
-                <td>-</td>
-                <td className="td-actions">
-                  <button className="btn-delete">Eliminar</button>
-                  <button className="btn-modify">Modificar</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>00128</td>
-                <td>Andrés Méndez</td>
-                <td>andres.m@gmail.com</td>
-                <td>Jugador</td>
-                <td>Halcones</td>
-                <td className="td-actions">
-                  <button className="btn-delete">Eliminar</button>
-                  <button className="btn-modify">Modificar</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>00129</td>
-                <td>Sofía Herrera</td>
-                <td>sofi.h@gmail.com</td>
-                <td>Jugadora</td>
-                <td>Titanes FC</td>
-                <td className="td-actions">
-                  <button className="btn-delete">Eliminar</button>
-                  <button className="btn-modify">Modificar</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>00130</td>
-                <td>Ricardo Peña</td>
-                <td>ricardo.p@gmail.com</td>
-                <td>Jugador</td>
-                <td>Guerreros</td>
-                <td className="td-actions">
-                  <button className="btn-delete">Eliminar</button>
-                  <button className="btn-modify">Modificar</button>
-                </td>
-              </tr>
+                      <button
+                        className="btn-modify"
+                        onClick={() => navigate("/users/edit/" + u.identificacion)}
+                      >
+                        Modificar
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
+
 
           </table>
         </div>

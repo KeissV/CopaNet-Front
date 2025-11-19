@@ -22,6 +22,12 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
+    // ===== ESTADOS FALTANTES =====
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [usuario, setUsuario] = useState(null);
+  const [tablas, setTablas] = useState([]);
 
   const [screen, setScreen] = useState(null);
 
